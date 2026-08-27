@@ -1,0 +1,718 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Fredoka:wght@400;600;700&display=swap');
+
+/* ========================================= */
+/* VARIABLES - PALETA PASTEL Y TRAZO CÓMIC */
+/* ========================================= */
+
+:root {
+    --rosa-pastel-fondo: #fff0f5;
+    --rosa-pastel-tarjeta: #ffdeeb;
+    --rosa-pastel-brillante: #ffb7d2;
+    --rosa-oscuro: #d45b87;
+    --borde-caricatura: #5a3d4c;
+    --sombra-caricatura: #e291b0;
+    --texto: #4a2e3b;
+    --amarillo-pastel: #fff4bd;
+}
+
+/* ========================================= */
+/* GENERAL */
+/* ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Fredoka', cursive, sans-serif;
+    color: var(--texto);
+    background-color: var(--rosa-pastel-fondo);
+    background-image: 
+        radial-gradient(var(--rosa-pastel-brillante) 15%, transparent 16%),
+        radial-gradient(var(--rosa-pastel-brillante) 15%, transparent 16%);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* ========================================= */
+/* DECORACIONES FLOTANTES */
+/* ========================================= */
+
+.decoraciones span {
+    position: fixed;
+    z-index: 0;
+    color: var(--rosa-oscuro);
+    font-size: 32px;
+    animation: flotar 6s ease-in-out infinite;
+    pointer-events: none;
+    text-shadow: 2px 2px 0px var(--rosa-pastel-brillante);
+}
+
+.decoraciones span:nth-child(1) { left: 8%; top: 15%; }
+.decoraciones span:nth-child(2) { left: 20%; top: 70%; animation-delay: 1s; }
+.decoraciones span:nth-child(3) { left: 88%; top: 12%; animation-delay: 2s; }
+.decoraciones span:nth-child(4) { left: 76%; top: 62%; animation-delay: 3s; }
+.decoraciones span:nth-child(5) { left: 52%; top: 10%; animation-delay: 1.5s; }
+.decoraciones span:nth-child(6) { left: 94%; top: 82%; animation-delay: 2.5s; }
+.decoraciones span:nth-child(7) { left: 5%; top: 88%; animation-delay: 4s; }
+.decoraciones span:nth-child(8) { left: 65%; top: 84%; animation-delay: 3.5s; }
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(12deg); }
+}
+
+/* ========================================= */
+/* INICIO (TARJETA CARICATURA) */
+/* ========================================= */
+
+.inicio {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+.tarjeta-inicio {
+    width: min(580px, 100%);
+    padding: 40px 25px;
+    text-align: center;
+    background: #ffffff;
+    border: 4px solid var(--borde-caricatura);
+    border-radius: 35px;
+    box-shadow: 8px 8px 0px var(--sombra-caricatura);
+    animation: entrada 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes entrada {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.capsula {
+    font-size: 45px;
+    display: inline-block;
+    animation: moverCapsula 2s infinite ease-in-out;
+}
+
+@keyframes moverCapsula {
+    0%, 100% { transform: rotate(-10deg) scale(1); }
+    50% { transform: rotate(10deg) scale(1.1); }
+}
+
+.pinguino-inicio {
+    font-size: 95px;
+    margin: 10px 0;
+    filter: drop-shadow(4px 4px 0px var(--borde-caricatura));
+    animation: saltar 1.8s ease-in-out infinite;
+}
+
+@keyframes saltar {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(-5deg); }
+}
+
+.pequeno {
+    letter-spacing: 2px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--rosa-oscuro);
+    background: var(--amarillo-pastel);
+    display: inline-block;
+    padding: 4px 12px;
+    border: 2px solid var(--borde-caricatura);
+    border-radius: 15px;
+}
+
+.tarjeta-inicio h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(42px, 8vw, 65px);
+    line-height: 1;
+    color: var(--rosa-oscuro);
+    margin: 15px 0;
+    text-shadow: 3px 3px 0px var(--rosa-pastel-tarjeta);
+}
+
+.descripcion {
+    max-width: 420px;
+    margin: 15px auto 25px;
+    line-height: 1.6;
+    font-size: 17px;
+}
+
+/* ========================================= */
+/* BOTONES CÓMIC */
+/* ========================================= */
+
+.boton-comenzar {
+    border: 3px solid var(--borde-caricatura);
+    color: #ffffff;
+    background: #ff7bb0;
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 5px 5px 0px var(--borde-caricatura);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.boton-comenzar:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0px var(--borde-caricatura);
+    background: #ff609f;
+}
+
+.boton-comenzar:active {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0px var(--borde-caricatura);
+}
+
+.indicacion {
+    font-size: 13px;
+    opacity: 0.8;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+/* ========================================= */
+/* CORTINAS */
+/* ========================================= */
+
+.escena-cortinas {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    background: var(--rosa-pastel-fondo);
+    overflow: hidden;
+    display: none;
+}
+
+.escena-cortinas.activa {
+    display: block;
+}
+
+.cortina {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 52%;
+    z-index: 3;
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            #ffb2d0 0 25px,
+            #ffa0c4 25px 50px
+        );
+    border-right: 4px solid var(--borde-caricatura);
+    transition: transform 2.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.cortina-derecha {
+    border-right: none;
+    border-left: 4px solid var(--borde-caricatura);
+}
+
+.cortina-izquierda { left: 0; transform-origin: left; }
+.cortina-derecha { right: 0; transform-origin: right; }
+
+.escena-cortinas.abierta .cortina-izquierda { transform: translateX(-105%); }
+.escena-cortinas.abierta .cortina-derecha { transform: translateX(105%); }
+
+.barra-cortina {
+    position: absolute;
+    top: 15px;
+    left: 2%;
+    width: 96%;
+    height: 18px;
+    border-radius: 20px;
+    background: #ff85b3;
+    border: 3px solid var(--borde-caricatura);
+    z-index: 5;
+}
+
+.pinguino-cortina {
+    position: absolute;
+    z-index: 6;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    transition: left 2s ease;
+}
+
+.pinguino-grande {
+    font-size: 110px;
+    filter: drop-shadow(4px 4px 0px var(--borde-caricatura));
+}
+
+.moño {
+    font-size: 45px;
+    animation: jalar 0.8s infinite alternate;
+}
+
+@keyframes jalar {
+    from { transform: translateX(-8px) rotate(-10deg); }
+    to { transform: translateX(8px) rotate(10deg); }
+}
+
+.pinguino-cortina p {
+    font-weight: 800;
+    color: var(--rosa-oscuro);
+    font-size: 22px;
+    background: #ffffff;
+    padding: 5px 15px;
+    border: 3px solid var(--borde-caricatura);
+    border-radius: 20px;
+    box-shadow: 4px 4px 0px var(--borde-caricatura);
+}
+
+.escena-cortinas.abierta .pinguino-cortina { left: 15%; }
+
+.mensaje-detras {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    z-index: 1;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    font-family: 'Baloo 2', cursive;
+    color: var(--rosa-oscuro);
+    font-size: clamp(30px, 6vw, 55px);
+    transition: all 1.2s ease 0.8s;
+}
+
+.escena-cortinas.abierta .mensaje-detras {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* ========================================= */
+/* CONTENIDO */
+/* ========================================= */
+
+.contenido {
+    position: relative;
+    z-index: 1;
+    max-width: 850px;
+    margin: auto;
+    padding: 40px 18px 70px;
+    display: none;
+}
+
+.contenido.visible {
+    display: block;
+    animation: aparecerContenido 1s ease;
+}
+
+@keyframes aparecerContenido {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: none; }
+}
+
+/* ========================================= */
+/* HERO */
+/* ========================================= */
+
+.hero {
+    text-align: center;
+    padding: 20px 10px 30px;
+}
+
+.brillos {
+    color: var(--rosa-oscuro);
+    font-size: 22px;
+}
+
+.etiqueta {
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--rosa-oscuro);
+    background: var(--amarillo-pastel);
+    padding: 4px 14px;
+    border: 2px solid var(--borde-caricatura);
+    border-radius: 12px;
+    display: inline-block;
+}
+
+.hero h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(50px, 9vw, 85px);
+    color: var(--rosa-oscuro);
+    line-height: 0.95;
+    margin: 15px 0;
+    text-shadow: 4px 4px 0px #ffffff, 7px 7px 0px var(--sombra-caricatura);
+}
+
+.hero h2 {
+    font-family: 'Baloo 2', cursive;
+    color: var(--texto);
+    font-size: clamp(22px, 4vw, 32px);
+}
+
+/* ========================================= */
+/* TARJETAS CARICATURA */
+/* ========================================= */
+
+.tarjeta {
+    position: relative;
+    background: #ffffff;
+    border: 4px solid var(--borde-caricatura);
+    border-radius: 30px;
+    padding: 35px 25px;
+    margin: 35px 0;
+    box-shadow: 7px 7px 0px var(--sombra-caricatura);
+}
+
+.titulo-seccion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.titulo-seccion span {
+    font-size: 32px;
+}
+
+.titulo-seccion h2 {
+    font-family: 'Baloo 2', cursive;
+    color: var(--rosa-oscuro);
+    font-size: 32px;
+    margin: 0;
+    text-align: center;
+}
+
+/* ========================================= */
+/* FOTO INDIVIDUAL (ESTILO POLAROID/CÓMIC) */
+/* ========================================= */
+
+.marco-foto {
+    width: min(380px, 100%);
+    aspect-ratio: 4 / 5;
+    margin: auto;
+    padding: 15px 15px 40px 15px;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 3px solid var(--borde-caricatura);
+    box-shadow: 6px 6px 0px var(--rosa-pastel-tarjeta);
+    transform: rotate(-2deg);
+}
+
+.marco-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid var(--borde-caricatura);
+}
+
+.texto-foto {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* ========================================= */
+/* NUEVA SECCIÓN: AMIGOS PARA SIEMPRE */
+/* ========================================= */
+
+.seccion-amigos {
+    background: #fff8fa;
+    text-align: center;
+}
+
+.subtitulo-amigos {
+    font-size: 17px;
+    margin-top: -10px;
+    margin-bottom: 25px;
+    color: var(--texto);
+}
+
+.galeria-amigos {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.marco-amigo {
+    position: relative;
+    width: min(280px, 100%);
+    aspect-ratio: 1 / 1;
+    background: #ffffff;
+    border: 3px solid var(--borde-caricatura);
+    border-radius: 22px;
+    padding: 12px;
+    box-shadow: 6px 6px 0px var(--sombra-caricatura);
+    transition: transform 0.3s ease;
+}
+
+.marco-amigo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 2px solid var(--borde-caricatura);
+}
+
+.foto-rotada-izq {
+    transform: rotate(-4deg);
+}
+
+.foto-rotada-der {
+    transform: rotate(4deg);
+}
+
+.marco-amigo:hover {
+    transform: scale(1.05) rotate(0deg);
+    z-index: 5;
+}
+
+.pila-decorativa {
+    position: absolute;
+    top: -15px;
+    right: -10px;
+    font-size: 28px;
+    filter: drop-shadow(2px 2px 0px var(--borde-caricatura));
+}
+
+/* ========================================= */
+/* MENSAJE */
+/* ========================================= */
+
+.mensaje {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 20px;
+    align-items: center;
+}
+
+.pinguino-mensaje {
+    font-size: 85px;
+    text-align: center;
+    filter: drop-shadow(3px 3px 0px var(--borde-caricatura));
+}
+
+.mensaje p {
+    line-height: 1.7;
+    font-size: 17px;
+}
+
+.resaltado {
+    color: var(--rosa-oscuro);
+    font-weight: 700;
+    background: var(--rosa-pastel-tarjeta);
+    padding: 3px 8px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+/* ========================================= */
+/* FARMACIA */
+/* ========================================= */
+
+.farmacia {
+    text-align: center;
+}
+
+.iconos-farmacia {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 38px;
+}
+
+.iconos-farmacia span {
+    animation: flotar 3s infinite ease-in-out;
+}
+
+.farmacia h2 {
+    font-family: 'Baloo 2', cursive;
+    color: var(--rosa-oscuro);
+    font-size: 32px;
+}
+
+.receta {
+    text-align: left;
+    max-width: 550px;
+    margin: 20px auto;
+    padding: 25px;
+    border: 3px dashed var(--borde-caricatura);
+    border-radius: 20px;
+    background: #fff8fb;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.sello {
+    display: inline-block;
+    border: 3px solid var(--borde-caricatura);
+    background: #ffd6e7;
+    color: var(--rosa-oscuro);
+    padding: 10px 20px;
+    border-radius: 15px;
+    transform: rotate(-6deg);
+    font-weight: 800;
+    box-shadow: 4px 4px 0px var(--borde-caricatura);
+}
+
+/* ========================================= */
+/* BIBLIA */
+/* ========================================= */
+
+.biblia {
+    text-align: center;
+    padding: 40px 20px;
+    background: #fffbf0;
+}
+
+.libro {
+    font-size: 55px;
+}
+
+.biblia h2 {
+    max-width: 650px;
+    margin: 15px auto;
+    font-family: 'Baloo 2', cursive;
+    color: var(--rosa-oscuro);
+    font-size: 28px;
+    line-height: 1.4;
+}
+
+.versiculo {
+    color: var(--rosa-oscuro);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.cruz {
+    font-size: 28px;
+    color: var(--rosa-oscuro);
+}
+
+/* ========================================= */
+/* FINAL Y REPETIR */
+/* ========================================= */
+
+.final {
+    text-align: center;
+    padding: 40px 15px 20px;
+}
+
+.pingüinos {
+    font-size: 60px;
+    letter-spacing: 12px;
+    animation: bailar 1.2s infinite ease-in-out;
+}
+
+@keyframes bailar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+.final h2 {
+    font-family: 'Baloo 2', cursive;
+    color: var(--rosa-oscuro);
+    font-size: 38px;
+}
+
+.corazones {
+    color: var(--rosa-oscuro);
+    font-size: 28px;
+}
+
+.boton-repetir {
+    display: block;
+    margin: 25px auto;
+    padding: 14px 28px;
+    border: 3px solid var(--borde-caricatura);
+    border-radius: 50px;
+    background: #ffffff;
+    color: var(--rosa-oscuro);
+    font-weight: 700;
+    font-size: 17px;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--borde-caricatura);
+    transition: all 0.2s ease;
+}
+
+.boton-repetir:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--borde-caricatura);
+    background: var(--rosa-pastel-tarjeta);
+}
+
+.boton-repetir:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--borde-caricatura);
+}
+
+/* ========================================= */
+/* RESPONSIVO (CELULAR) */
+/* ========================================= */
+
+@media (max-width: 650px) {
+    .tarjeta {
+        padding: 25px 18px;
+        border-width: 3px;
+        box-shadow: 5px 5px 0px var(--sombra-caricatura);
+    }
+
+    .mensaje {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .pinguino-mensaje {
+        font-size: 75px;
+    }
+
+    .iconos-farmacia {
+        gap: 12px;
+        font-size: 30px;
+    }
+
+    .pinguino-grande {
+        font-size: 80px;
+    }
+
+    .galeria-amigos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .marco-amigo {
+        width: 100%;
+        max-width: 260px;
+    }
+}
